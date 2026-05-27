@@ -72,12 +72,16 @@ def bater_ponto():
         time.sleep(2)
 
         # Tentar encontrar botão "Incluir Ponto" primeiro (já logado)
+        # IMPORTANTE: ignorar o menu lateral (data-testid='menu-incluir-ponto')
+        # e clicar apenas no botão azul do mapa (segundo elemento, sem data-testid de menu)
         try:
-            logger.info("Procurando botão 'Incluir Ponto' (já pode estar logado)...")
+            logger.info("Procurando botão azul 'Incluir Ponto' (já pode estar logado)...")
             botao_incluir = WebDriverWait(driver, 10).until(
-                EC.element_to_be_clickable((By.XPATH, "//button[contains(text(), 'Incluir Ponto')]"))
+                EC.element_to_be_clickable((By.XPATH,
+                    "//*[contains(text(), 'Incluir Ponto') and not(@data-testid='menu-incluir-ponto')]"
+                ))
             )
-            logger.info("✅ Página já está logada!")
+            logger.info("Página já está logada!")
         except:
             # Se não encontrou, tentar fazer login
             logger.info("Não encontrou sessão ativa. Fazendo login...")
@@ -111,10 +115,12 @@ def bater_ponto():
                 driver.get(URL)
                 time.sleep(3)
 
-                # Procurar botão de forma mais flexível
+                # Clicar no botão AZUL do mapa, NÃO no menu lateral
                 logger.info("Procurando botão 'Incluir Ponto'...")
                 botao_incluir = WebDriverWait(driver, TIMEOUT).until(
-                    EC.element_to_be_clickable((By.XPATH, "//*[contains(text(), 'Incluir Ponto')]"))
+                    EC.element_to_be_clickable((By.XPATH,
+                        "//*[contains(text(), 'Incluir Ponto') and not(@data-testid='menu-incluir-ponto')]"
+                    ))
                 )
             except Exception as login_error:
                 logger.error(f"Erro ao fazer login: {str(login_error)}")
