@@ -1,0 +1,123 @@
+╔════════════════════════════════════════════════════════════════╗
+║          AUTOMAÇÃO DE BATIDA DE PONTO - INSTRUÇÕES              ║
+║                      (Windows Local)                            ║
+╚════════════════════════════════════════════════════════════════╝
+
+📋 REQUISITOS:
+  ✓ Windows 10/11
+  ✓ Python 3.7+ instalado
+  ✓ Google Chrome instalado
+  ✓ Conexão com Internet
+
+═══════════════════════════════════════════════════════════════════
+
+🚀 PASSO 1: INSTALAR PYTHON (se não tiver)
+
+  1. Acesse: https://www.python.org/downloads/
+  2. Baixe a versão mais recente (3.11+)
+  3. Execute o instalador
+  4. ✅ MARQUE: "Add Python to PATH"
+  5. Clique em "Install Now"
+  6. Feche o instalador
+
+═══════════════════════════════════════════════════════════════════
+
+🔧 PASSO 2: CONFIGURAR TAREFAS AGENDADAS
+
+  1. Abra PowerShell como Administrador:
+     - Windows + X
+     - Selecione "Terminal do Windows (Admin)"
+     ou
+     - Clique direito no PowerShell e "Executar como administrador"
+
+  2. Execute este comando:
+
+     cd C:\Users\paulo.garcia\Desktop\Repos\automao-batida-ponto
+     .\configurar_agendador.ps1
+
+  3. Aguarde a instalação das dependências (Selenium, etc)
+  4. Veja a confirmação: "✅ CONFIGURAÇÃO COMPLETA!"
+
+═══════════════════════════════════════════════════════════════════
+
+✅ PASSO 3: VERIFICAR INSTALAÇÃO
+
+  1. Abra "Agendador de Tarefas" (Task Scheduler):
+     - Pressione Windows + R
+     - Digite: taskschd.msc
+     - Pressione Enter
+
+  2. Procure por "BatidaPonto_" na lista:
+     ✓ BatidaPonto_0825  (08:25)
+     ✓ BatidaPonto_1200  (12:00)
+     ✓ BatidaPonto_1325  (13:25)
+     ✓ BatidaPonto_1800  (18:00)
+
+═══════════════════════════════════════════════════════════════════
+
+🧪 PASSO 4: TESTE (OPCIONAL)
+
+  1. Abra PowerShell normal (não precisa ser Admin)
+  2. Execute:
+
+     cd C:\Users\paulo.garcia\Desktop\Repos\automao-batida-ponto
+     python batida_ponto_local.py
+
+  3. Você verá:
+     - O navegador abrindo
+     - Login sendo realizado
+     - Botão "Incluir Ponto" sendo clicado
+     - Confirmação: "✅ PONTO BATIDO COM SUCESSO!"
+
+═══════════════════════════════════════════════════════════════════
+
+📊 MONITORAR EXECUÇÕES
+
+  Logs são salvos em:
+  C:\Users\paulo.garcia\AppData\Local\batida_ponto_logs\
+
+  Abra os arquivos .log para ver:
+  - ✅ Execuções bem-sucedidas
+  - ❌ Erros (se houver)
+  - 🕐 Horários de execução
+
+═══════════════════════════════════════════════════════════════════
+
+⚠️ PROBLEMAS COMUNS
+
+  P: "Python não é reconhecido"
+  R: Reinicie o PowerShell após instalar Python
+
+  P: "Acesso negado ao executar o script"
+  R: Execute PowerShell como Administrador
+
+  P: "Chrome não abre"
+  R: Certifique-se de que Chrome está instalado
+
+  P: "Selenium erro"
+  R: Execute: pip install --upgrade selenium
+
+═══════════════════════════════════════════════════════════════════
+
+✨ PRONTO!
+
+Sua batida de ponto agora é AUTOMÁTICA:
+
+  08:25 ➜ Entrada (manhã)
+  12:00 ➜ Saída (manhã)
+  13:25 ➜ Entrada (tarde)
+  18:00 ➜ Saída (tarde)
+
+Roda de segunda a sexta automaticamente!
+Seu PC NÃO precisa estar ligado (Sleep/Hibernate é ok).
+
+═══════════════════════════════════════════════════════════════════
+
+💬 SUPORTE:
+
+Se tiver problemas:
+1. Verifique os logs em: batida_ponto_logs\
+2. Execute manualmente para ver erros
+3. Tente o teste do Passo 4
+
+═══════════════════════════════════════════════════════════════════

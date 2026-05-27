@@ -1,0 +1,22 @@
+{
+  "name": "automacao-batida-ponto",
+  "version": "1.0.0",
+  "description": "Automação de batida de ponto - Secullum",
+  "main": "batida_ponto.js",
+  "scripts": {
+    "test": "node batida_ponto.js",
+    "test:python": "python batida_ponto.py",
+    "test:playwright": "python batida_ponto_playwright.py"
+  },
+  "keywords": [
+    "automacao",
+    "batida",
+    "ponto",
+    "secullum"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "playwright": "^1.40.0"
+  }
+}
