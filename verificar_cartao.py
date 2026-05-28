@@ -7,6 +7,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
 from pathlib import Path
+from datetime import date
 import time
 
 USUARIO = "172"
@@ -49,9 +50,10 @@ try:
     print(f"Screenshot salvo: {screenshot}")
 
     # Pegar o texto da pagina para analise
+    hoje_str = date.today().strftime("%d/%m")
     texto = driver.find_element(By.TAG_NAME, "body").text
-    linhas_hoje = [l for l in texto.split('\n') if '27/05' in l or '27/05' in l]
-    print("\n=== DADOS DE HOJE (27/05) ===")
+    linhas_hoje = [l for l in texto.split('\n') if hoje_str in l]
+    print(f"\n=== DADOS DE HOJE ({hoje_str}) ===")
     for linha in linhas_hoje:
         print(linha)
 
